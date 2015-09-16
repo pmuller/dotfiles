@@ -1,0 +1,13 @@
+alias less='less -r'
+alias df='df -h'
+alias du='du -h'
+alias vi=vim
+alias ls='ls --color'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+if [[ "$(uname -o)" == "Cygwin" ]]
+then
+    alias chrome="/cygdrive/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
+fi

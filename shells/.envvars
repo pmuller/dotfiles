@@ -1,0 +1,8 @@
+# Shell configuration
+HISTFILE=~/.histfile
+HISTSIZE=20000
+SAVEHIST=10000
+# Locales
+export LANG=en_US.UTF-8
+# Default editor
+export EDITOR=vim

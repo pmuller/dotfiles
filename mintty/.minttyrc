@@ -1,0 +1,16 @@
+BoldAsFont=yes
+Font=Anonymice Powerline
+FontHeight=10
+AllowBlinking=yes
+FontSmoothing=default
+Term=xterm-256color
+Transparency=low
+OpaqueWhenFocused=yes
+CursorType=block
+CursorBlinks=no
+SwitchShortcuts=no
+Columns=100
+Rows=50
+Scrollbar=none
+Locale=C
+Charset=UTF-8
