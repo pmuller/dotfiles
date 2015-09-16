@@ -7,7 +7,14 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-if [[ "$(uname -o)" == "Cygwin" ]]
+# PostgreSQL dev aliases
+alias pg_start='pg_ctl -D ~/dev/pgdata start'
+
+if [[ $OSTYPE =~ ^cygwin ]]
 then
-    alias chrome="/cygdrive/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
+    alias www="/cygdrive/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
+elif [[ $OSTYPE =~ ^darwin ]]
+then
+    alias ls='ls -FGh'
+    alias www=open
 fi
