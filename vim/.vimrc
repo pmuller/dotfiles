@@ -36,7 +36,7 @@ set shiftwidth=4
 " Tabs are converted to spaces
 set expandtab
 
-" Allow hidden buffers
+" Hide buffers when they are abandoned
 set hidden
 
 " Display the cursor position on the bottom right corner
@@ -47,6 +47,9 @@ set whichwrap=b,s,<,>,[,]
 
 " Display line numbers
 set number
+
+" Use relative line numbers
+set relativenumber
 
 " Quicky display matching paren/bracket when typing
 set showmatch
@@ -72,19 +75,46 @@ set incsearch
 " Enable search highlighting
 set hlsearch
 
-" Use relative line numbers
-set relativenumber
+" Do smart case matching
+set smartcase
 
 " Start scrolling 5 lines before the window border
-set so=5
+set scrolloff=5
 
 " Show commands
 set showcmd
 
+" turn on wild menu :e <Tab>
+set wildmenu
+
+" set wildmenu to list choice
+set wildmode=list:longest
+
+" Map ; to :
+noremap ; :
+
+" Use space as leader key
+let mapleader = " "
+
+" Open 2 vertical windows if started with 2 files
+if argc() == 2
+    silent vertical all
+endif
+
 " Use a dark background
 set background=dark
 
-set t_Co=256
+" Use 256 colors
+if &term =~ "xterm"
+ set t_Co=256
+ if has("terminfo")
+   let &t_Sf=nr2char(27).'[3%p1%dm'
+   let &t_Sb=nr2char(27).'[4%p1%dm'
+ else
+   let &t_Sf=nr2char(27).'[3%dm'
+   let &t_Sb=nr2char(27).'[4%dm'
+ endif
+endif
 
 " Color scheme
 "colorscheme bubblegum-256-dark
@@ -107,13 +137,25 @@ let g:promptline_preset={
     \'y' : [ promptline#slices#git_status() ],
     \'warn' : [ promptline#slices#last_exit_code() ]}
 
-" tab navigation like firefox
-nnoremap <C-h> :tabprevious<CR>
-nnoremap <C-l> :tabnext<CR>
-nnoremap <C-t> :tabnew<CR>
+" Tab navigation like firefox
+nnoremap <C-H> :tabprevious<CR>
+nnoremap <C-L> :tabnext<CR>
+nnoremap <C-T> :tabnew<CR>
 
-" Map ; to :
-noremap ; :
+" Buffer navigation
+nnoremap <C-B> :ls<CR>
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
 
 " Syntastic configuration
 let g:syntastic_rst_checkers = ['rstcheck']
+
+" DiffSaved command
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
