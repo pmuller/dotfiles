@@ -12,6 +12,7 @@ export EDITOR=vim
 if [[ $OSTYPE =~ ^cygwin ]]
 then
     export CYGWIN_MIRROR=http://mirror.switch.ch/ftp/mirror/cygwin/
+    export VAGRANT_DETECTED_OS=cygwin
 elif [[ $OSTYPE =~ ^darwin ]]
 then
     export PATH=/usr/local/bin:/usr/local/sbin:$PATH
