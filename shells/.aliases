@@ -20,6 +20,8 @@ then
     alias cyginstall='cygsetup --quiet-mode --no-shortcuts --no-desktop --no-startmenu --root "$(cygpath -m /)" --local-package-dir "$(cygpath -w /packages)" --site $CYGWIN_MIRROR --packages'
     # VirtualBox
     alias VBoxManage='/cygdrive/c/Program\ Files/Oracle/VirtualBox/VBoxManage.exe'
+    # Use procps' ps (the cygwin standard "ps" does not show programs arguments)
+    alias ps=procps
 elif [[ $OSTYPE =~ ^darwin ]]
 then
     alias ls='ls -FGh'
