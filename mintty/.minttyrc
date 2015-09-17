@@ -1,6 +1,6 @@
 BoldAsFont=yes
-Font=Anonymice Powerline
-FontHeight=10
+Font=Inconsolata for Powerline
+FontHeight=11
 AllowBlinking=yes
 FontSmoothing=default
 Term=xterm-256color
