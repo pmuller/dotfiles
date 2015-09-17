@@ -3,7 +3,8 @@ REM Download the cygwin installer from https://cygwin.com/setup-x86_64.exe
 set PLATFORM=x86_64
 set MIRROR=http://mirror.switch.ch/ftp/mirror/cygwin/
 set ROOT=c:\cygwin
-set COMMAND=setup-%PLATFORM%.exe ^
+set EXE=setup-%PLATFORM%.exe
+set COMMAND=%EXE% ^
     --quiet-mode ^
     --site %MIRROR% ^
     --no-shortcuts ^
@@ -33,3 +34,4 @@ xorg-x11-fonts-dpi100,xorg-x11-fonts-dpi75,xorg-x11-fonts-ethiopic,^
 xorg-x11-fonts-misc,xorg-x11-fonts-Type1,xrdb,xset,xterm,xxd,xz,zip,zsh
 
 %COMMAND% --packages %PACKAGES%
+copy %EXE% %ROOT%\bin\cygsetup.exe /y
