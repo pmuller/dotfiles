@@ -13,6 +13,7 @@ alias pg_start='pg_ctl -D ~/dev/pgdata start'
 if [[ $OSTYPE =~ ^cygwin ]]
 then
     alias www="/cygdrive/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
+    alias vagrant="/cygdrive/c/HashiCorp/Vagrant/bin/vagrant.exe"
 elif [[ $OSTYPE =~ ^darwin ]]
 then
     alias ls='ls -FGh'
