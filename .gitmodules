@@ -55,3 +55,6 @@
 [submodule "vim/.vim/bundle/supertab"]
 	path = vim/.vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "vim/.vim/bundle/gnupg"]
+	path = vim/.vim/bundle/gnupg
+	url = https://github.com/jamessan/vim-gnupg.git
