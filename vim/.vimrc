@@ -150,6 +150,9 @@ nnoremap <C-B> :ls<CR>
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
+" Clear high-lighted search results
+nnoremap <leader>/ :nohlsearch<CR>
+
 " Syntastic configuration
 let g:syntastic_rst_checkers = ['rstcheck']
 
