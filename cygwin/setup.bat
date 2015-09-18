@@ -31,7 +31,13 @@ time,tmux,tree,ttcp,tzcode,unace,unzip,util-linux,vim,vim-common,^
 vim-minimal,wget,which,whois,xauth,xhost,xinit,xkbcomp,xkbutils,^
 xkeyboard-config,xmodmap,xorg-scripts,xorg-server,xorg-server-common,^
 xorg-x11-fonts-dpi100,xorg-x11-fonts-dpi75,xorg-x11-fonts-ethiopic,^
-xorg-x11-fonts-misc,xorg-x11-fonts-Type1,xrdb,xset,xterm,xxd,xz,zip,zsh
+xorg-x11-fonts-misc,xorg-x11-fonts-Type1,xrdb,xset,xterm,xxd,xz,zip,zsh,^
+mingw64-x86_64-binutils,mingw64-x86_64-bzip2,mingw64-x86_64-gcc,^
+mingw64-x86_64-headers,mingw64-x86_64-hidapi,mingw64-x86_64-libgcrypt,^
+mingw64-x86_64-libgpg,mingw64-x86_64-minizip,mingw64-x86_64-pkg,^
+mingw64-x86_64-pthreads,mingw64-x86_64-runtime,mingw64-x86_64-windows,^
+mingw64-x86_64-winpthreads,mingw64-x86_64-xz,mingw64-x86_64-zlib,^
+mingw64-x86_64-gcc-core,mingw64-x86_64-gcc-g++
 
 %COMMAND% --packages %PACKAGES%
 copy %EXE% %ROOT%\bin\cygsetup.exe /y
