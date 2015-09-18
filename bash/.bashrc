@@ -36,3 +36,5 @@ source ~/.shell_prompt.sh
 source ~/.envvars
 # Load aliases
 source ~/.aliases
+# Ensure ssh-agent is running
+source ~/.ssh-agent.sh
