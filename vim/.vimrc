@@ -66,6 +66,9 @@ set backspace=indent,eol,start
 " Highlight the current line background
 set cursorline
 
+" Highlight at 80 characters
+set colorcolumn=80
+
 " Do not wrap text, keep it in a single line
 set nowrap
 
