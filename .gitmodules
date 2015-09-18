@@ -58,3 +58,6 @@
 [submodule "vim/.vim/bundle/gnupg"]
 	path = vim/.vim/bundle/gnupg
 	url = https://github.com/jamessan/vim-gnupg.git
+[submodule "vim/.vim/bundle/indentline"]
+	path = vim/.vim/bundle/indentline
+	url = https://github.com/Yggdroot/indentLine.git
