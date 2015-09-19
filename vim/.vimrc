@@ -93,6 +93,9 @@ set wildmenu
 " set wildmenu to list choice
 set wildmode=list:longest
 
+" Clipboard integration (works on Mac OS X)
+set clipboard=unnamed
+
 " Map ; to :
 noremap ; :
 
