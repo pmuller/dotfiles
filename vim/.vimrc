@@ -143,16 +143,6 @@ let g:promptline_preset={
     \'y' : [ promptline#slices#git_status() ],
     \'warn' : [ promptline#slices#last_exit_code() ]}
 
-" Tab navigation like firefox
-nnoremap <C-H> :tabprevious<CR>
-nnoremap <C-L> :tabnext<CR>
-nnoremap <C-T> :tabnew<CR>
-
-" Buffer navigation
-nnoremap <C-B> :ls<CR>
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-P> :bprev<CR>
-
 " Clear high-lighted search results
 nnoremap <Leader>/ :nohlsearch<CR>
 
