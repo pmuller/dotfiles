@@ -29,12 +29,8 @@ export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
 # Whenever displaying the prompt, write the previous line to disk
 # export PROMPT_COMMAND="history -a"
 
-# Load the promptline script
-source ~/.shell_prompt.sh
-
-# Load environment variables
-source ~/.envvars.sh
-# Load aliases
-source ~/.aliases.sh
-# Ensure ssh-agent is running
-source ~/.ssh-agent.sh
+# Source other scripts
+for SCRIPT in ~/.*.sh
+do
+    source "$SCRIPT"
+done
