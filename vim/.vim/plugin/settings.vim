@@ -57,8 +57,8 @@ set cursorline
 " Highlight at 80 characters
 set colorcolumn=80
 
-" Do not wrap text, keep it in a single line
-"set nowrap
+" Wrap long lines by default
+set wrap
 
 " Enable incremental search
 set incsearch

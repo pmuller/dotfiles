@@ -5,10 +5,17 @@ let mapleader = " "
 noremap ; :
 
 " Clear high-lighted search results
-nnoremap <Leader>/ :nohlsearch<CR>
+nnoremap <silent> <Leader>/ :nohlsearch<CR>
 
 " Toggle line numbering
-nmap <Leader>n :set relativenumber!<CR>:set number!<CR>
+nmap <silent> <Leader>n :set relativenumber!<CR>:set number!<CR>
 
 " Toggle paste mode
-nmap <Leader>p :set paste!<CR>
+nmap <silent> <Leader>p :set paste!<CR>
+
+" Toggle line wrapping
+nmap <silent> <Leader>w :set wrap!<CR>
+
+" Use emacs-style bindings in command mode
+cnoremap <C-A> <Home>
+cnoremap <C-D> <Delete>
