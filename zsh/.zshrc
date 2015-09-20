@@ -11,8 +11,8 @@ bindkey '^R' history-incremental-search-backward
 # Load the promptline script
 source ~/.shell_prompt.sh
 # Load environment variables
-source ~/.envvars
+source ~/.envvars.sh
 # Load aliases
-source ~/.aliases
+source ~/.aliases.sh
 # Ensure ssh-agent is running
 source ~/.ssh-agent.sh

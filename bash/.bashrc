@@ -33,8 +33,8 @@ export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
 source ~/.shell_prompt.sh
 
 # Load environment variables
-source ~/.envvars
+source ~/.envvars.sh
 # Load aliases
-source ~/.aliases
+source ~/.aliases.sh
 # Ensure ssh-agent is running
 source ~/.ssh-agent.sh
