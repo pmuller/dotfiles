@@ -58,7 +58,7 @@ set cursorline
 set colorcolumn=80
 
 " Do not wrap text, keep it in a single line
-set nowrap
+"set nowrap
 
 " Enable incremental search
 set incsearch
