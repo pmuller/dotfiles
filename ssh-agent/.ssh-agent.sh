@@ -1,5 +1,5 @@
-SSH_AGENT_LIFETIME=10h
-SSH_AGENT_VARS=~/.ssh-agent.vars.$HOSTNAME
+_SSH_AGENT_LIFETIME=10h
+_SSH_AGENT_VARS=~/.ssh-agent.vars.$HOSTNAME
 
 
 _is_ssh_agent_running()
@@ -10,16 +10,16 @@ _is_ssh_agent_running()
 
 _run_ssh_agent()
 {
-    ssh-agent -s -t $SSH_AGENT_LIFETIME | grep -v ^echo >"$SSH_AGENT_VARS"
-    source "$SSH_AGENT_VARS"
+    ssh-agent -s -t $_SSH_AGENT_LIFETIME | grep -v ^echo >"$_SSH_AGENT_VARS"
+    source "$_SSH_AGENT_VARS"
     ssh-add
 }
 
 
 # Load last ssh-agent variables
-if [[ -f "$SSH_AGENT_VARS" ]]
+if [[ -f "$_SSH_AGENT_VARS" ]]
 then
-    source "$SSH_AGENT_VARS"
+    source "$_SSH_AGENT_VARS"
 fi
 
 
