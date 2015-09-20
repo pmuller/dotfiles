@@ -12,25 +12,19 @@ Initial setup
 .. code-block:: console
 
     $ cd
-    $ git clone https://github.com/pmuller/dotfiles.git
-    $ cd dotfiles
-    # Fetch git submodules
+    $ git clone https://github.com/pmuller/dotfiles.git ~/.dotfiles
+    $ cd ~/.dotfiles
     $ git submodule init
     $ git submodule update
-    # Run stow for each "package"
-    $ for F in *; if [[ -d "$F" ]]; then stow $F; fi
 
+* Windows:
 
-Update
-------
+    .. code-block:: console
 
-.. code-block:: console
+        $ for P in bash mintty shells ssh-agent tmux top vim zsh; do stow $P; done
 
-    $ cd ~/dotfiles
-    $ stow PACKAGE_NAME
+* Linux & Mac: 
 
+    .. code-block:: console
 
-vim
----
-
-Whenever possible, vim plugins are managed using git submodules.
+        $ for P in bash shells ssh-agent tmux top vim zsh; do stow $P; done
