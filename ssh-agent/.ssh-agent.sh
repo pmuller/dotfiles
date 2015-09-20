@@ -16,12 +16,16 @@ _run_ssh_agent()
 }
 
 
-# Load last ssh-agent variables
-if [[ -f "$_SSH_AGENT_VARS" ]]
+if [[ "$OSTYPE" =~ ^darwin ]]
 then
-    source "$_SSH_AGENT_VARS"
+    # Do nothing on OSX, rely on system's ssh-agent
+    :
+else
+    # Load last ssh-agent variables
+    if [[ -f "$_SSH_AGENT_VARS" ]]
+    then
+        source "$_SSH_AGENT_VARS"
+    fi
+    # Launch the ssh-agent if not already running
+    _is_ssh_agent_running || _run_ssh_agent
 fi
-
-
-# Launch the ssh-agent if not already running
-_is_ssh_agent_running || _run_ssh_agent
