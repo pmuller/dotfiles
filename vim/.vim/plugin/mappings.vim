@@ -1,9 +1,3 @@
-" Use space as leader key
-let mapleader = " "
-
-" Map ; to :
-noremap ; :
-
 " Clear high-lighted search results
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
 
@@ -14,8 +8,7 @@ nmap <silent> <Leader>n :set relativenumber!<CR>:set number!<CR>
 nmap <silent> <Leader>p :set paste!<CR>
 
 " Toggle line wrapping
-nmap <silent> <Leader>w :set wrap!<CR>
+nmap <silent> <Leader>w :set wrap!<CR>:set wrap?<CR>
 
-" Use emacs-style bindings in command mode
-cnoremap <C-A> <Home>
-cnoremap <C-D> <Delete>
+" <Leader>d to view git diff of current buffer
+nmap <Leader>d :!clear<CR>:!git diff %<CR>
