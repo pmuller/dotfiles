@@ -9,6 +9,7 @@ new_tmux_django_session()
     fi
 
     tmux new-session $SESSION_CREATE_ARGS -d -n code vim
+    tmux rename-session $SESSION
     tmux new-window -n shell
     tmux new-window -n python "./manage.py shell"
     tmux new-window -n server "./manage.py runserver"
