@@ -37,7 +37,7 @@ mingw64-x86_64-headers,mingw64-x86_64-hidapi,mingw64-x86_64-libgcrypt,^
 mingw64-x86_64-libgpg,mingw64-x86_64-minizip,mingw64-x86_64-pkg,^
 mingw64-x86_64-pthreads,mingw64-x86_64-runtime,mingw64-x86_64-windows,^
 mingw64-x86_64-winpthreads,mingw64-x86_64-xz,mingw64-x86_64-zlib,^
-mingw64-x86_64-gcc-core,mingw64-x86_64-gcc-g++
+mingw64-x86_64-gcc-core,mingw64-x86_64-gcc-g++,cygutils-extra
 
 %COMMAND% --packages %PACKAGES%
 copy %EXE% %ROOT%\bin\cygsetup.exe /y
