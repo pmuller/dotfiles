@@ -1,5 +1,6 @@
 setopt appendhistory beep nomatch
-unsetopt autocd extendedglob notify
+setopt extendedglob
+unsetopt autocd notify
 #bindkey -v
 
 autoload -Uz compinit

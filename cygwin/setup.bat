@@ -38,7 +38,9 @@ mingw64-x86_64-libgpg,mingw64-x86_64-minizip,mingw64-x86_64-pkg,^
 mingw64-x86_64-pthreads,mingw64-x86_64-runtime,mingw64-x86_64-windows,^
 mingw64-x86_64-winpthreads,mingw64-x86_64-xz,mingw64-x86_64-zlib,^
 mingw64-x86_64-gcc-core,mingw64-x86_64-gcc-g++,cygutils-extra,gcc-core,^
-gcc-g++,pkg-config
+gcc-g++,gcc-debuginfo,pkg-config,subversion,python-crypto,^
+libmysqlclient-devel,mysql,mysqld,freetds,postgresql,postgresql-client,^
+postgresql-devel
 
 %COMMAND% --packages %PACKAGES%
 copy %EXE% %ROOT%\bin\cygsetup.exe /y

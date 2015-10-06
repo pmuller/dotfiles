@@ -10,7 +10,7 @@ _is_ssh_agent_running()
 
 _run_ssh_agent()
 {
-    ssh-agent -s -t $_SSH_AGENT_LIFETIME | grep -v ^echo >"$_SSH_AGENT_VARS"
+    ssh-agent -s -t $_SSH_AGENT_LIFETIME | grep -v '^echo' >"$_SSH_AGENT_VARS"
     source "$_SSH_AGENT_VARS"
     ssh-add
 }
