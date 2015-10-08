@@ -81,5 +81,11 @@ set wildmenu
 " set wildmenu to list choice
 set wildmode=list:longest
 
-" Clipboard integration (works on Mac OS X)
-set clipboard=unnamed
+" Clipboard integration
+if has('unix') && system('uname -s') =~ 'Linux'
+    " Works on Linux/X11
+    set clipboard=unnamedplus
+else
+    " Works on Mac OS X & Cygwin
+    set clipboard=unnamed
+endif
