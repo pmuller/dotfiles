@@ -14,3 +14,6 @@ for SCRIPT in ~/.*.sh
 do
     source "$SCRIPT"
 done
+
+# Fix right prompt trailing white space
+export ZLE_RPROMPT_INDENT=0
