@@ -9,7 +9,7 @@ let prompt_is_root = {
         \'    fi',
         \'}']}
 let g:promptline_preset={
-    \'a' : [ prompt_is_root, promptline#slices#jobs() ],
+    \'a' : [ prompt_is_root, promptline#slices#battery({ 'threshold': 25 }), promptline#slices#jobs() ],
     \'b' : [ promptline#slices#python_virtualenv() ],
     \'c' : [ promptline#slices#cwd() ],
     \'x' : [ promptline#slices#vcs_branch() ],

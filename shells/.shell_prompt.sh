@@ -7,12 +7,46 @@ function prompt_is_root {
         echo -n "root"
     fi
 }
+function __promptline_battery {
+  local percent_sign="%"
+  local battery_symbol=""
+  local threshold="25"
 
-function __promptline_last_exit_code {
+  # escape percent "%" in zsh
+  [[ -n ${ZSH_VERSION-} ]] && percent_sign="${percent_sign//\%/%%}"
 
-  [[ $last_exit_code -gt 0 ]] || return 1;
+  # osx
+  if hash ioreg 2>/dev/null; then
+    local ioreg_output
+    if ioreg_output=$(ioreg -rc AppleSmartBattery 2>/dev/null); then
+      local battery_capacity=${ioreg_output#*MaxCapacity\"\ \=}
+      battery_capacity=${battery_capacity%%\ \"*}
 
-  printf "%s" "$last_exit_code"
+      local current_capacity=${ioreg_output#*CurrentCapacity\"\ \=}
+      current_capacity=${current_capacity%%\ \"*}
+
+      local battery_level=$(($current_capacity * 100 / $battery_capacity))
+      [[ $battery_level -gt $threshold ]] && return 1
+
+      printf "%s" "${battery_symbol}${battery_level}${percent_sign}"
+      return
+    fi
+  fi
+
+  # linux
+  for possible_battery_dir in /sys/class/power_supply/BAT*; do
+    if [[ -d $possible_battery_dir && -f "$possible_battery_dir/charge_full" && -f "$possible_battery_dir/charge_now" ]]; then
+      current_capacity=$( <"$possible_battery_dir/charge_now" )
+      battery_capacity=$( <"$possible_battery_dir/charge_full" )
+      local battery_level=$(($current_capacity * 100 / $battery_capacity))
+      [[ $battery_level -gt $threshold ]] && return 1
+
+      printf "%s" "${battery_symbol}${battery_level}${percent_sign}"
+      return
+    fi
+  done
+
+return 1
 }
 function __promptline_ps1 {
   local slice_prefix slice_empty_prefix slice_joiner slice_suffix is_prompt_empty=1
@@ -22,6 +56,7 @@ function __promptline_ps1 {
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "a" slices
   __promptline_wrapper "$(prompt_is_root)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __promptline_wrapper "$(__promptline_battery)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
   __promptline_wrapper "$(__promptline_jobs)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "b" header
@@ -100,6 +135,7 @@ function __promptline_left_prompt {
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "a" slices
   __promptline_wrapper "$(prompt_is_root)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __promptline_wrapper "$(__promptline_battery)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
   __promptline_wrapper "$(__promptline_jobs)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "b" header
@@ -172,6 +208,13 @@ function __promptline_git_status {
   [[ $added_count -gt 0 ]]         && { printf "%s" "$leading_whitespace$added_symbol$added_count"; leading_whitespace=" "; }
   [[ $has_untracked_files -gt 0 ]] && { printf "%s" "$leading_whitespace$has_untracked_files_symbol"; leading_whitespace=" "; }
   [[ $is_clean -gt 0 ]]            && { printf "%s" "$leading_whitespace$clean_symbol"; leading_whitespace=" "; }
+}
+
+function __promptline_last_exit_code {
+
+  [[ $last_exit_code -gt 0 ]] || return 1;
+
+  printf "%s" "$last_exit_code"
 }
 function __promptline_right_prompt {
   local slice_prefix slice_empty_prefix slice_joiner slice_suffix
