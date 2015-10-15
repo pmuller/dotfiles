@@ -85,3 +85,6 @@
 [submodule "vim/.vim/bundle/simpyfold"]
 	path = vim/.vim/bundle/simpyfold
 	url = https://github.com/tmhedberg/SimpylFold.git
+[submodule "vim/.vim/bundle/yaml"]
+	path = vim/.vim/bundle/yaml
+	url = https://github.com/stephpy/vim-yaml.git
