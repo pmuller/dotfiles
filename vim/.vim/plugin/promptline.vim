@@ -1,6 +1,15 @@
 let g:promptline_powerline_symbols=1
+let prompt_is_root = {
+    \'function_name': 'prompt_is_root',
+    \'function_body': [
+        \'function prompt_is_root {',
+        \'    if [ $UID -eq 0 ]',
+        \'    then',
+        \'        echo -n "root"',
+        \'    fi',
+        \'}']}
 let g:promptline_preset={
-    \'a' : [ promptline#slices#jobs() ],
+    \'a' : [ prompt_is_root, promptline#slices#jobs() ],
     \'b' : [ promptline#slices#python_virtualenv() ],
     \'c' : [ promptline#slices#cwd() ],
     \'x' : [ promptline#slices#vcs_branch() ],
