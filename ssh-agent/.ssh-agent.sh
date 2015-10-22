@@ -1,5 +1,5 @@
 _SSH_AGENT_LIFETIME=10h
-_SSH_AGENT_VARS=~/.ssh-agent.vars.$HOSTNAME
+_SSH_AGENT_VARS=~/.ssh-agent.vars.$(hostname -f)
 
 
 _is_ssh_agent_running()
