@@ -1,7 +1,8 @@
 setopt appendhistory beep nomatch
 setopt extendedglob
 unsetopt autocd notify
-#bindkey -v
+# Dear zsh, please let me remove my files freely. Even when I'm wrong.
+unsetopt no_rm_star_silent
 
 autoload -Uz compinit
 compinit
