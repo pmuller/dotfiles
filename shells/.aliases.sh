@@ -10,7 +10,10 @@ alias fgrep='fgrep --color=auto'
 # PostgreSQL dev aliases
 alias pg_start='pg_ctl -D ~/dev/pgdata start'
 
-if [[ $OSTYPE =~ ^cygwin ]]
+if [[ $OSTYPE =~ ^linux ]]
+then
+    alias marathon="$HOME/.gem/ruby/2.1.0/bin/marathon"
+elif [[ $OSTYPE =~ ^cygwin ]]
 then
     # Web browser
     alias www="/cygdrive/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
