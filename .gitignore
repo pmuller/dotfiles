@@ -1,2 +1,5 @@
 *.swp
 .netrwhist
+# ipython
+ipython/.ipython/profile_default/startup
+ipython/.ipython/profile_default/history.sqlite
