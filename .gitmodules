@@ -88,3 +88,12 @@
 [submodule "vim/.vim/bundle/yaml"]
 	path = vim/.vim/bundle/yaml
 	url = https://github.com/stephpy/vim-yaml.git
+[submodule "vim/.vim/bundle/vim-javascript"]
+	path = vim/.vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/.vim/bundle/html5.vim"]
+	path = vim/.vim/bundle/html5.vim
+	url = https://github.com/othree/html5.vim.git
+[submodule "vim/.vim/bundle/vim-angular"]
+	path = vim/.vim/bundle/vim-angular
+	url = https://github.com/burnettk/vim-angular
