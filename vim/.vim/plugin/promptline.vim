@@ -10,7 +10,7 @@ let prompt_is_root = {
         \'}']}
 let g:promptline_preset={
     \'a' : [ prompt_is_root, promptline#slices#battery({ 'threshold': 25 }), promptline#slices#jobs() ],
-    \'b' : [ promptline#slices#python_virtualenv() ],
+    \'b' : [ '$_vi_mode', promptline#slices#python_virtualenv() ],
     \'c' : [ promptline#slices#cwd() ],
     \'x' : [ promptline#slices#vcs_branch() ],
     \'y' : [ promptline#slices#git_status() ],

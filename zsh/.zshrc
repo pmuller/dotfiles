@@ -10,6 +10,8 @@ compinit
 # Use control+r to search history
 bindkey '^R' history-incremental-search-backward
 
+source ~/.vi-mode-prompt.zsh
+
 # Source other scripts
 for SCRIPT in ~/.*.sh
 do
