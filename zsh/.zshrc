@@ -19,4 +19,9 @@ do
 done
 
 # Fix right prompt trailing white space
-export ZLE_RPROMPT_INDENT=0
+if [[ $OSTYPE =~ ^darwin ]]
+then
+    export ZLE_RPROMPT_INDENT=1
+else
+    export ZLE_RPROMPT_INDENT=0
+fi
