@@ -89,3 +89,7 @@ else
     " Works on Mac OS X & Cygwin
     set clipboard=unnamed
 endif
+
+" Highlight trailing spaces, and tabs
+set list
+set list listchars=trail:•,nbsp:•,tab:>•
