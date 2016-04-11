@@ -45,8 +45,8 @@ set showmatch
 " Display --INSERT-- or --REPLACE-- in status line
 set showmode
 
-" Disable mouse
-set mouse=
+" Enable mouse
+set mouse=a
 
 " Define places where backspace is allowed to remove a character
 set backspace=indent,eol,start
