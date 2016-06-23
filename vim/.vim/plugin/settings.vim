@@ -93,3 +93,6 @@ endif
 " Highlight trailing spaces, and tabs
 set list
 set list listchars=trail:•,nbsp:•,tab:>•
+
+" Use space as leader key
+let mapleader = " "
