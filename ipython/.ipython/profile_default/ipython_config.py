@@ -317,25 +317,10 @@ c.TerminalInteractiveShell.automagic = False
 # c.TerminalInteractiveShell.pdb = False
 
 #------------------------------------------------------------------------------
-# PromptManager configuration
+# Prompt configuration
 #------------------------------------------------------------------------------
 
-# This is the primary interface for producing IPython's prompts.
-
-# Output prompt. '\#' will be transformed to the prompt number
-c.PromptManager.out_template = ''
-
-# Continuation prompt.
-c.PromptManager.in2_template = '... '
-
-# If True (default), each prompt will be right-aligned with the preceding one.
-c.PromptManager.justify = False
-
-# Input prompt.  '\#' will be transformed to the prompt number
-c.PromptManager.in_template = '>>> '
-
-# 
-# c.PromptManager.color_scheme = 'Linux'
+c.TerminalInteractiveShell.prompts_class = 'IPython.terminal.prompts.ClassicPrompts'
 
 #------------------------------------------------------------------------------
 # HistoryManager configuration
