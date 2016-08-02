@@ -4,4 +4,5 @@
 ipython/.ipython/profile_default/startup
 ipython/.ipython/profile_default/history.sqlite
 ipython/.ipython/profile_default/static
+ipython/.ipython/profile_default/db
 ipython/.ipython/README
