@@ -13,6 +13,9 @@ then
     source /opt/rh/rh-postgresql95/enable
     alias pg_start='pg_ctl -D /var/run/postgresql start'
 
+    # Use Python 3.5 from SCL
+    source /opt/rh/rh-python35/enable
+
 elif [[ $OSTYPE =~ ^darwin ]]
 then
     alias ls='ls -FGh'
