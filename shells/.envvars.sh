@@ -23,9 +23,3 @@ if [ -z "$TMUX" ]
 then
     export TERM=xterm-256color
 fi
-
-if [[ $OSTYPE =~ ^cygwin ]]
-then
-    export CYGWIN_MIRROR=http://mirror.switch.ch/ftp/mirror/cygwin/
-    export VAGRANT_DETECTED_OS=cygwin
-fi
