@@ -18,3 +18,4 @@ then
     alias www=open
     alias pg_start='pg_ctl -D ~/dev/pgdata start'
 fi
+alias fritzing="QT_AUTO_SCREEN_SCALE_FACTOR=0  ~/local/fritzing-0.9.3b.linux.AMD64/Fritzing"
