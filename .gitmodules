@@ -106,3 +106,6 @@
 [submodule "vim/.vim/bundle/terraform"]
 	path = vim/.vim/bundle/terraform
 	url = https://github.com/hashivim/vim-terraform.git
+[submodule "vim/.vim/bundle/autopep8"]
+	path = vim/.vim/bundle/autopep8
+	url = https://github.com/tell-k/vim-autopep8.git
