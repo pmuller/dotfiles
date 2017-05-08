@@ -3,7 +3,7 @@ PS1='\h:\w\$ '
 HISTFILE=~/.histfile
 HISTSIZE=20000
 SAVEHIST=10000
-export PATH=/opt/puppetlabs/bin:~/local/packer:~/local/terraform:node_modules/.bin:~/.conda/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+export PATH=~/bin:/opt/puppetlabs/bin:~/local/packer:~/local/terraform:node_modules/.bin:~/.conda/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 # Locales
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
