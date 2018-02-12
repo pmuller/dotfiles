@@ -3,7 +3,15 @@ PS1='\h:\w\$ '
 HISTFILE=~/.histfile
 HISTSIZE=20000
 SAVEHIST=10000
+
+# Handle $PATH
 export PATH=~/bin:/opt/puppetlabs/bin:node_modules/.bin:~/.conda/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+# Add rvm, if installed
+if [ -d "$HOME/.rvm/bin" ]
+then
+    export PATH="$HOME/.rvm/bin:$PATH"
+fi
+
 # Locales
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
