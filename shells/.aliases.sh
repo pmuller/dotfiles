@@ -6,7 +6,6 @@ alias ls='ls --color'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias sudossh="sudo -E ssh -vN -F $HOME/.ssh/config -o UserKnownHostsFile=$HOME/.ssh/known_hosts -l $USER"
 
 if [[ $OSTYPE =~ ^linux ]]
 then
