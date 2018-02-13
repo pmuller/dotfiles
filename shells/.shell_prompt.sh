@@ -1,7 +1,10 @@
-# Prompt configuration
+# Shorten $CWD when above this value (set to 0 to disable)
 BASH_PROMPT_MAX_PATH_LENGTH=${BASH_PROMPT_MAX_PATH_LENGTH-30}
-BASH_PROMPT_SHOW_FULL_PATH=${BASH_PROMPT_SHOW_FULL_PATH-0}
-BASH_PROMPT_HOST_PARTS=${BASH_PROMPT_HOST_PARTS-0}
+# Which parts of $HOSTNAME should be shown
+#  0: Show the full $HOSTNAME
+#  positive: Show the N first parts
+#  negative: Hide the last N parts
+BASH_PROMPT_HOST_PARTS=${BASH_PROMPT_HOST_PARTS-1}
 # Colors
 #  Git (default: green)
 BASH_PROMPT_COLOR_GIT=${BASH_PROMPT_COLOR_GIT-"\e[0;32m"} # green
@@ -56,23 +59,21 @@ _ps1_git() {
 }
 
 _ps1_host() {
-    local HOST
-
-    if [ "$BASH_PROMPT_HOST_PARTS" -gt 0 ]
+    if [ "$BASH_PROMPT_HOST_PARTS" -eq 0 ]
+    then
+        echo -n $HOSTNAME
+    elif [ "$BASH_PROMPT_HOST_PARTS" -eq 1 ]
+    then
+        echo -n ${HOSTNAME/.*}
+    elif [ "$BASH_PROMPT_HOST_PARTS" -gt 1 ]
     then
         # When positive, show first N parts
-        HOST=$(echo "$HOSTNAME" | cut -d. -f-$BASH_PROMPT_HOST_PARTS)
-    elif [ "$BASH_PROMPT_HOST_PARTS" -lt 0 ]
-    then
+        echo -n $(echo $HOSTNAME | cut -d. -f-$BASH_PROMPT_HOST_PARTS)
+    else # [ "$BASH_PROMPT_HOST_PARTS" -lt 0 ]
         # When negative, hide last N parts
         local CUT_START_FIELD=$(( ${BASH_PROMPT_HOST_PARTS/-} + 1 ))
-        HOST=$(echo "$HOSTNAME" | rev | cut -d. -f$CUT_START_FIELD- | rev)
-    else  # BASH_PROMPT_HOST_PARTS=0
-        # When 0, show only the first part
-        HOST=${HOSTNAME/.*}
+        echo -n $(echo $HOSTNAME | rev | cut -d. -f$CUT_START_FIELD- | rev)
     fi
-
-    echo -n "$HOST"
 }
 
 _ps1_last_exit_code() {
@@ -112,8 +113,8 @@ _ps1_cwd() {
     local LENGTH=${#DIR}
 
     # Shorten, if necessary
-    if [ "$LENGTH" -gt "$BASH_PROMPT_MAX_PATH_LENGTH" ] && \
-        [ "$BASH_PROMPT_SHOW_FULL_PATH" -eq 0 ]
+    if [ $BASH_PROMPT_MAX_PATH_LENGTH -gt 0 ] && \
+        [ "$LENGTH" -gt "$BASH_PROMPT_MAX_PATH_LENGTH" ]
     then
         local LAST_3=$(echo "$PWD" | rev | cut -d/ -f1-3 | rev)
         echo -e "$_UNICODE_ELLIPSIS/$LAST_3"
