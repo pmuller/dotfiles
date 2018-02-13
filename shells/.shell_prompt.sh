@@ -2,6 +2,27 @@
 BASH_PROMPT_MAX_PATH_LENGTH=${BASH_PROMPT_MAX_PATH_LENGTH-30}
 BASH_PROMPT_SHOW_FULL_PATH=${BASH_PROMPT_SHOW_FULL_PATH-0}
 BASH_PROMPT_HOST_PARTS=${BASH_PROMPT_HOST_PARTS-0}
+# Colors
+#  Git (default: green)
+BASH_PROMPT_COLOR_GIT=${BASH_PROMPT_COLOR_GIT-"\e[0;32m"} # green
+#  Background jobs (default: yellow)
+BASH_PROMPT_COLOR_JOBS=${BASH_PROMPT_COLOR_JOBS-"\e[0;33m"} # yellow
+#  Current working directory (default: blue)
+BASH_PROMPT_COLOR_CWD=${BASH_PROMPT_COLOR_CWD-"\e[0;34m"} # blue
+#  Virtualenv (default: cyan)
+BASH_PROMPT_COLOR_VIRTUALENV=${BASH_PROMPT_COLOR_VIRTUALENV-"\e[0;36m"} # cyan
+#  Last command exit code (default: bright red)
+BASH_PROMPT_COLOR_EXIT_CODE=${BASH_PROMPT_COLOR_EXIT_CODE-"\e[1;31m"} # bright red
+#  user@host separator (the @ sign, default: dark grey)
+BASH_PROMPT_COLOR_USER_HOST_SEP=${BASH_PROMPT_COLOR_USER_HOST_SEP-"\e[38;5;240m"} # dark grey
+#  The hostname (default: grey)
+BASH_PROMPT_COLOR_HOST=${BASH_PROMPT_COLOR_HOST-"\e[38;5;248m"} # grey
+#  The hostname, when it contains "production" (default: bright red)
+BASH_PROMPT_COLOR_HOST_PROD=${BASH_PROMPT_COLOR_HOST_PROD-"\e[1;31m"} # bright red
+#  Username, and $ sign (default: grey)
+BASH_PROMPT_COLOR_USER=${BASH_PROMPT_COLOR_USER-"\e[38;5;248m"} # grey
+#  The # sign, for root shells (default: bright red)
+BASH_PROMPT_COLOR_ROOT=${BASH_PROMPT_COLOR_ROOT-"\e[1;31m"} # bright red
 
 # Ask virtualenv to NOT change PS1
 VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -13,15 +34,6 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 
-# Colors
-_COLOR_RESET="\033[0m"
-_COLOR_GREEN="\033[0;32m"
-_COLOR_YELLOW="\033[0;33m"
-_COLOR_BLUE="\033[0;34m"
-_COLOR_CYAN="\033[0;36m"
-_COLOR_BRIGHT_RED="\033[1;31m"
-_COLOR_DARK_GREY="\033[38;5;240m"
-_COLOR_GREY="\033[38;5;248m"
 # Unicode chars
 _UNICODE_ELLIPSIS="\xe2\x80\xa6"
 
@@ -115,9 +127,9 @@ _ps1_id_color() {
     then
         # Show the hash in bright red, because we should never forget that
         # doing stuff as root is rarely necessary...
-        echo -ne $_COLOR_BRIGHT_RED
+        echo -ne $BASH_PROMPT_COLOR_ROOT
     else
-        echo -ne $_COLOR_GREY
+        echo -ne $BASH_PROMPT_COLOR_USER
     fi
 }
 
@@ -130,4 +142,4 @@ _ps1_is_ssh_user() {
 }
 
 
-PS1="\[$_COLOR_BRIGHT_RED\]\$(_ps1_last_exit_code)\[$_COLOR_YELLOW\]\$(_ps1_job_count)\[$_COLOR_GREY\]$(if _ps1_is_ssh_user; then echo -n $USER; fi)\[$_COLOR_DARK_GREY\]$(if _ps1_is_ssh_user; then echo -n @; fi)\[$(if [[ $HOSTNAME =~ production ]]; then echo -ne $_COLOR_BRIGHT_RED; else echo -ne $_COLOR_GREY; fi;)\]$(if _ps1_is_ssh; then _ps1_host; echo -n ' '; fi)\[$_COLOR_CYAN\]\$(_ps1_virtualenv)\[$_COLOR_BLUE\]\$(_ps1_cwd) \[$_COLOR_GREEN\]\$(_ps1_git)\[$(_ps1_id_color)\]\\$\[$_COLOR_RESET\] "
+PS1="\[$BASH_PROMPT_COLOR_EXIT_CODE\]\$(_ps1_last_exit_code)\[$BASH_PROMPT_COLOR_JOBS\]\$(_ps1_job_count)\[$BASH_PROMPT_COLOR_USER\]$(if _ps1_is_ssh_user; then echo -n $USER; fi)\[$BASH_PROMPT_COLOR_USER_HOST_SEP\]$(if _ps1_is_ssh_user; then echo -n @; fi)\[$(if [[ $HOSTNAME =~ production ]]; then echo -ne $BASH_PROMPT_COLOR_HOST_PROD; else echo -ne $BASH_PROMPT_COLOR_HOST; fi;)\]$(if _ps1_is_ssh; then _ps1_host; echo -n ' '; fi)\[$BASH_PROMPT_COLOR_VIRTUALENV\]\$(_ps1_virtualenv)\[$BASH_PROMPT_COLOR_CWD\]\$(_ps1_cwd) \[$BASH_PROMPT_COLOR_GIT\]\$(_ps1_git)\[$(_ps1_id_color)\]\\$\[\e[m\] "
