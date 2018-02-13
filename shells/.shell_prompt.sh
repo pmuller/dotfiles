@@ -1,7 +1,7 @@
 # Prompt configuration
-_BASH_PROMPT_MAX_PATH_LENGTH=30
-_BASH_PROMPT_SHOW_FULL_PATH=0
-_BASH_PROMPT_HOST_PARTS=1
+BASH_PROMPT_MAX_PATH_LENGTH=${BASH_PROMPT_MAX_PATH_LENGTH-30}
+BASH_PROMPT_SHOW_FULL_PATH=${BASH_PROMPT_SHOW_FULL_PATH-0}
+BASH_PROMPT_HOST_PARTS=${BASH_PROMPT_HOST_PARTS-0}
 
 # Ask virtualenv to NOT change PS1
 VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -46,16 +46,16 @@ _ps1_git() {
 _ps1_host() {
     local HOST
 
-    if [ "$_BASH_PROMPT_HOST_PARTS" -gt 0 ]
+    if [ "$BASH_PROMPT_HOST_PARTS" -gt 0 ]
     then
         # When positive, show first N parts
-        HOST=$(echo "$HOSTNAME" | cut -d. -f-$_BASH_PROMPT_HOST_PARTS)
-    elif [ "$_BASH_PROMPT_HOST_PARTS" -lt 0 ]
+        HOST=$(echo "$HOSTNAME" | cut -d. -f-$BASH_PROMPT_HOST_PARTS)
+    elif [ "$BASH_PROMPT_HOST_PARTS" -lt 0 ]
     then
         # When negative, hide last N parts
-        local CUT_START_FIELD=$(( "$_BASH_PROMPT_HOST_PARTS" + 1 ))
+        local CUT_START_FIELD=$(( ${BASH_PROMPT_HOST_PARTS/-} + 1 ))
         HOST=$(echo "$HOSTNAME" | rev | cut -d. -f$CUT_START_FIELD- | rev)
-    else  # _BASH_PROMPT_HOST_PARTS=0
+    else  # BASH_PROMPT_HOST_PARTS=0
         # When 0, show only the first part
         HOST=${HOSTNAME/.*}
     fi
@@ -100,8 +100,8 @@ _ps1_cwd() {
     local LENGTH=${#DIR}
 
     # Shorten, if necessary
-    if [ "$LENGTH" -gt "$_BASH_PROMPT_MAX_PATH_LENGTH" ] && \
-        [ "$_BASH_PROMPT_SHOW_FULL_PATH" -eq 0 ]
+    if [ "$LENGTH" -gt "$BASH_PROMPT_MAX_PATH_LENGTH" ] && \
+        [ "$BASH_PROMPT_SHOW_FULL_PATH" -eq 0 ]
     then
         local LAST_3=$(echo "$PWD" | rev | cut -d/ -f1-3 | rev)
         echo -e "$_UNICODE_ELLIPSIS/$LAST_3"
