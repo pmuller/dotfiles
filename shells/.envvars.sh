@@ -5,7 +5,7 @@ HISTSIZE=20000
 SAVEHIST=10000
 
 # Handle $PATH
-export PATH=~/bin:/opt/puppetlabs/bin:node_modules/.bin:~/.conda/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+export PATH=~/.local/bin:~/bin:/opt/puppetlabs/bin:node_modules/.bin:~/.conda/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 # Add rvm, if installed
 if [ -d "$HOME/.rvm/bin" ]
 then
