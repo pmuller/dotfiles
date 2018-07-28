@@ -7,10 +7,10 @@ SAVEHIST=10000
 # Handle $PATH
 export PATH=~/.local/bin:~/bin:/opt/puppetlabs/bin:node_modules/.bin:~/.conda/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 # Add rvm, if installed
-if [ -d "$HOME/.rvm/bin" ]
-then
-    export PATH="$HOME/.rvm/bin:$PATH"
-fi
+#if [ -d "$HOME/.rvm/bin" ]
+#then
+#    export PATH="$HOME/.rvm/bin:$PATH"
+#fi
 
 # Locales
 export LANG=en_US.UTF-8
