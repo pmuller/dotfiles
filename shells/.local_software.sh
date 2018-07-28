@@ -19,3 +19,5 @@ _load_local_software() {
 _load_local_software vim
 _load_local_software packer
 _load_local_software terraform
+_load_local_software amtool
+_load_local_software gitflow-avh
